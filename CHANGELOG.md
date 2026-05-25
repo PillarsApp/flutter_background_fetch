@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.7.0 &mdash; 2026-05-25
+* [iOS] Adopt `FlutterSceneLifeCycleDelegate` for Flutter 3.41 UIScene lifecycle support.
+* [Changed] Bump minimum Flutter SDK constraint to `>=3.38.0`.
+
 ## 1.6.2 &mdash; 2026-04-20
 * [Android] Fix `MissingPluginException` on `com.transistorsoft/flutter_background_fetch/methods` after app relaunch when a foreground service kept the process alive post-termination.  `HeadlessTask` now destroys its background `FlutterEngine` when the main Activity re-attaches, and `BackgroundFetchModule` tracks method channels per-`BinaryMessenger` so destroying one engine (e.g. a sibling plugin's headless isolate) no longer strips the handler from another engine's channel.
 

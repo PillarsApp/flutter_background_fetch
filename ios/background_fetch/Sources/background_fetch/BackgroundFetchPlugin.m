@@ -47,6 +47,9 @@ static NSString *const ACTION_SCHEDULE_TASK = @"scheduleTask";
 
     BackgroundFetchPlugin* instance = [[BackgroundFetchPlugin alloc] init];
     [registrar addApplicationDelegate:instance];
+    if ([registrar respondsToSelector:@selector(addSceneDelegate:)]) {
+        [registrar addSceneDelegate:instance];
+    }
     [registrar addMethodCallDelegate:instance channel:channel];
 
     NSString *eventPath = [NSString stringWithFormat:@"%@/%@", PLUGIN_PATH, EVENT_CHANNEL_NAME];
