@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(    
     name: "background_fetch",
     platforms: [
-        .iOS("12.0")
+        .iOS("13.0")
     ],
     products: [
         .library(
@@ -15,13 +15,15 @@ let package = Package(
         )
     ],    
     dependencies: [
-        .package(url: "https://github.com/transistorsoft/transistor-background-fetch.git", from: "4.1.0")
+        .package(url: "https://github.com/transistorsoft/transistor-background-fetch.git", from: "4.1.0"),
+        .package(name: "FlutterFramework", path: "../FlutterFramework")
     ],
     targets: [
         .target(
             name: "background_fetch",
             dependencies: [
-                .product(name: "TSBackgroundFetch", package: "transistor-background-fetch")
+                .product(name: "TSBackgroundFetch", package: "transistor-background-fetch"),
+                .product(name: "FlutterFramework", package: "FlutterFramework")
             ],
             cSettings: [
                 .headerSearchPath("include/background_fetch")
