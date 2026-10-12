@@ -32,8 +32,16 @@ static NSString *const ACTION_SCHEDULE_TASK = @"scheduleTask";
     return YES;
 }
 
++ (void)registerBGTaskHandlers {
+    // BGTaskScheduler raises if a handler is registered twice.
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [[TSBackgroundFetch sharedInstance] didFinishLaunching];
+    });
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [[TSBackgroundFetch sharedInstance] didFinishLaunching];
+    [BackgroundFetchPlugin registerBGTaskHandlers];
     return YES;
 }
 
